@@ -30,8 +30,11 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int quantity = 2;
+        int quantity;
         int unitPrice = 5;
+
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        quantity = Integer.parseInt(quantityTextView.getText().toString());
 
         display (quantity);
         displayPrice (quantity * unitPrice);
@@ -55,12 +58,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increment(View view) {
-        int quantity = 3;
+        int quantity;
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+
+        quantity = Integer.parseInt(quantityTextView.getText().toString());
+        quantity++;
+
+        quantityTextView.setText("" + quantity);
         display (quantity);
     }
 
     public void decrement(View view) {
-        int quantity = 1;
+        int quantity;
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+
+        quantity = Integer.parseInt(quantityTextView.getText().toString());
+        if (quantity > 0)
+            quantity--;
+
+        quantityTextView.setText("" + quantity);
         display (quantity);
     }
 }

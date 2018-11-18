@@ -21,17 +21,23 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
 
     // Make the quantity variable global instead of local  (i.e remove it from the 3 functions a) submitOrder
-    // b) increment & c) decrement) then initialize global varaible to read from the "quantity_text_view".
-    TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-    int quantity = Integer.parseInt(quantityTextView.getText().toString());
+    // b) increment & c) decrement)
+    int quantity;
 
     // Also make the varaible unitPrice global
     int unitPrice = 5;
+
+    // define the quantityTextView as global as well in order to be able use it in the onCreate function
+    TextView quantityTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //  Initialize global varaible to read from the "quantity_text_view".
+        quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        quantity = Integer.parseInt(quantityTextView.getText().toString());
     }
 
     /**

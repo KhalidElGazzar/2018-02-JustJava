@@ -20,6 +20,14 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
 
+    // Make the quantity variable global instead of local  (i.e remove it from the 3 functions a) submitOrder
+    // b) increment & c) decrement) then initialize global varaible to read from the "quantity_text_view".
+    TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+    int quantity = Integer.parseInt(quantityTextView.getText().toString());
+
+    // Also make the varaible unitPrice global
+    int unitPrice = 5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,12 +38,6 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int quantity;
-        int unitPrice = 5;
-
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantity = Integer.parseInt(quantityTextView.getText().toString());
-
         display (quantity);
         displayPrice (quantity * unitPrice);
     }
@@ -58,10 +60,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increment(View view) {
-        int quantity;
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-
-        quantity = Integer.parseInt(quantityTextView.getText().toString());
         quantity++;
 
         quantityTextView.setText("" + quantity);
@@ -69,10 +67,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void decrement(View view) {
-        int quantity;
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-
-        quantity = Integer.parseInt(quantityTextView.getText().toString());
         if (quantity > 0)
             quantity--;
 
